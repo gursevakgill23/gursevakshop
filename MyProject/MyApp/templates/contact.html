@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+{% for message in messages %}
+<div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+    <strong>Message: </strong> {{ message }}!
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{% endfor %}
+<body>
+<h1 class='text-center'>Contact Us</h1>
+<div class='container' style='margin-bottom:150px'>
+    <form method="post" action="/contact">
+        {%csrf_token%}
+        <div class="mb-3">
+            <label for="name">Name</label>
+            <input type="name" name="name" class="form-control" id="name" placeholder="Enter your name">
+        </div>
+        <div class="mb-3">
+            <label for="phone">Contact Number</label>
+            <input type="phone" name="phone" class="form-control" id="phone" placeholder="Enter your Phone number">
+        </div>
+        <div class="mb-3">
+            <label for="email">Email</label>
+            <input type="email" name="email" class="form-control" id="email" placeholder="Enter your Email Address">
+        </div>
+        <div class="mb-3">
+            <label for="desc">Description</label>
+            <textarea class="form-control" id="desc" rows="3" name="desc"></textarea>
+        </div> <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+</body>
+
+{%endblock%}
